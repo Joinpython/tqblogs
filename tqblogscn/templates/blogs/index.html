@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <!--轮播图-->
+    <div class="main_banner">
+        <div class="main_banner_wrap">
+            <div class="main_banner_box" id="m_box">
+                <a href="javascript:void(0)" class="banner_btn js_pre">
+                    <span class="banner_btn_arrow"><i></i></span>
+                </a>
+                <a href="javascript:void(0)" class="banner_btn btn_next js_next">
+                    <span class="banner_btn_arrow"><i></i></span>
+                </a>
+                <ul>
+                    {% for picture in carousel %}
+                    <li id="imgCard{{ forloop.counter0 }}">
+                        <a href="{% url 'blogs:detail' picture.id %}"><span style="opacity:0;"></span></a>
+                        <img src="{% static picture.images %}" alt="">
+                        <p style="bottom:0">{{ picture.title }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!--火狐倒影图层-->
+                <p id="rflt"></p>
+                <!--火狐倒影图层-->
+            </div>
+            <!--序列号按钮-->
+            <div class="btn_list">
+                <span class="curr"></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+    <!--文章列表-->
+	<div class="articleList container">
+		<div class="row">
+			<div class="col-md-12">
+
+                {% for article in article_list %}
+                <!--single article-->
+				<div class="article">
+					<div class="articleHeader">
+						<h1 class="articleTitle"><a href="{% url 'blogs:detail' article.id %}">{{ article.title }}</a></h1>
+					</div>
+					<div class="articleBody clearfix">
+						<!--缩略图-->
+						<div class="articleThumb">
+							<a href="#"><img src="{% static article.images %}" alt="{{ article.title }}" title="{{ article.title }}"></a>
+						</div>
+						<!--摘要-->
+						<div class="articleFeed">
+                            <p>{{ article.description }}</p>
+						<!--tags-->
+						<div class="articleTags">
+							<ul></ul>
+						</div>
+					</div>
+					<div class="articleFooter clearfix">
+						<ul class="articleStatu">
+							<li><i class="fa fa-calendar"></i>{{ article.date }}</li>
+							<li><i class="fa fa-eye"></i>{{ article.count }}次浏览</li>
+							<li><a href="#"><i class="fa fa-folder-o"></i></a><a href="#" rel="category">{{ article.category }}</a></li>
+						</ul>
+						<a href="{% url 'blogs:detail' article.id %}" class="btn btn-readmore btn-info btn-md">阅读更多</a>
+					</div>
+				</div>
+				<!--single article-->
+                {% endfor %}
+
+            </div>
+		</div>
+	</div>
+	<div class="container pageNav">
+		<div class="row">
+			<div class="col-md-12">
+				<nav>
+				  <ul class="pagination">
+                      <li><a class="next page-numbers" href="{% url 'blogs:list' 1 %}">下一页</a></li>
+                  </ul>
+                </nav>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

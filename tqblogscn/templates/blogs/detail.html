@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+<title>博文详情 | 漂泊在北京的个人博客 </title>
+{% endblock title %}
+{% block content %}
+<div class="articleDetail container">
+      	<div class="row">
+		    <div class="col-md-12">
+			  <div class="articleContent">
+				<!-- 标题 -->
+				<div class="title">{{ blogs.title }}</div>
+				<!-- 访问量 ...-->
+				    <div class="secTitleBar">
+                        <ul>
+                            <li>分类：<a href="#" rel="category">{{ blogs.category }}</a></li>
+                            <li>发表：{{ blogs.date }}</li>
+                            <li>围观({{ blogs.count }})</li>
+                            <li><a href="#">评论({{ content.count }})</a></li>
+                        </ul>
+				</div>
+				<!-- 内容 -->
+				<div class="articleCon post_content">
+                 {{ form }}
+                    {% autoescape off %}
+                    {{ blogs.content | safe }}
+                    {% endautoescape %}
+                </div>
+				<!-- 标签 -->
+				<div class="articleTagsBox" id="coment">
+                    <p style="font-size: 25px">评论列表：</p>
+					<ul>
+                        {% for comment in content %}
+                        <li>
+                            <div>评论昵称：<span>{{ comment.name }}</span></div>
+                            <div>评论时间：<span>{{ comment.create_time }}</span></div>
+                            <div>评论内容：<span>{{ comment.comment }}</span></div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+				</div>
+				<!-- 评论 -->
+				<div class="post_content">
+					<div id="comments" class="responsesWrapper">
+                    <h3 class="comments-title">共有 <span class="commentCount">0</span> 条评论</h3>
+                        <form action="#" class="commentform" id="commentform">
+                                <div class="commentform-info">
+                                    <label id="author_name" for="author">
+                                        <input class="form-control" id="author" type="text" tabindex="2" value="" name="author" placeholder="昵称[必填]" >
+                                    </label>
+                                    <label id="author_email" for="email">
+                                        <input class="form-control" id="email" type="text" tabindex="3" value="" name="email" placeholder="邮箱[选填]" >
+                                    </label>
+                                    <label id="author_website" for="url">
+                                        <input class="form-control" id="url" type="text" tabindex="4" value="" name="url" placeholder="网址(选填)">
+                                    </label>
+                                </div>
+                            <textarea class="form-control" rows="6" id="comment" placeholder="说出您的看法，提出您的建议..." name="comment"></textarea>
+                            <input style="width: auto;" name="submit" type="submit" id="submit" class="btn btn-sm btn-danger btn-block" tabindex="1" value="发表评论">
+                        </form>
+                            <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+    <script>
+        $('#submit').click(function () {
+            var author = $('#author').val();
+            var email = $('#email').val();
+            var url = $('#url').val();
+            var comment = $('#comment').val();
+            var cont = {
+                'author':author,
+                'email':email,
+                'url':url,
+                'comment':comment
+            };
+
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                url:"{% url 'blogs:detail' blogs.id %}",
+                data:cont,
+                success:function (data) {
+                if (data.code === 200){
+                    alert('有参数为空！！');
+                }else if(data.code === 201){
+                    alert('邮箱格式不正确！！');
+                }else if (data.code === 202){
+                    alert('评论成功！！');
+                    location.href = data.next_url
+
+                }
+            }
+        })
+    });
+
+</script>
+{% endblock content %}

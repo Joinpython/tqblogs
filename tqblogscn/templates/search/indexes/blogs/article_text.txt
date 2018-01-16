@@ -1,0 +1,7 @@
+{{ object.title }}
+{{ object.author }}
+{{ object.date }}
+{{ object.description }}
+{{ object.content }}
+{{ object.category }}
+{{ object.tag }}

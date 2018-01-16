@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+<title>留言板 | 漂泊在北京的个人博客 </title>
+{% endblock title %}
+{% block content %}
+        <div class="post_content">
+            <div id="comments" class="responsesWrapper">
+                    <p style="font-size: 25px" >共有 <span class="commentCount">{{ content.count }}</span> 条留言</p>
+                        <form action="#" class="commentform" id="commentform">
+                                <div class="commentform-info">
+                                    <label id="author_name" for="author">
+                                        <input class="form-control" id="author" type="text" tabindex="2" value="" name="author" placeholder="昵称[必填]" >
+                                    </label>
+                                    <label id="author_email" for="email">
+                                        <input class="form-control" id="email" type="text" tabindex="3" value="" name="email" placeholder="邮箱[选填]" >
+                                    </label>
+                                    <label id="author_website" for="url">
+                                        <input class="form-control" id="url" type="text" tabindex="4" value="" name="url" placeholder="网址(选填)">
+                                    </label>
+                                </div>
+                            <textarea style="width: 1300px; height: 200px" class="form-control" rows="6" id="comment" placeholder="说出您的看法，提出您的建议..." name="comment"></textarea>
+                            <input style="width: auto;" name="submit" type="submit" id="submit" class="btn btn-sm btn-danger btn-block" tabindex="1" value="留言">
+                        </form>
+
+                            <div>
+                        </div>
+                    </div>
+                </div>
+        <div class="articleTagsBox" id="coment">
+        <p style="font-size: 25px">留言板：</p>
+					<ul>
+                        {% for comment in content %}
+                        <li>
+                            <span>昵称：{{ comment.name }}</span>
+                            <span>时间：{{ comment.create_time }}</span>
+                            <span>内容：{{ comment.comment }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+				</div>
+
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+    <script>
+        $('#submit').click(function () {
+            var author = $('#author').val();
+            var email = $('#email').val();
+            var url = $('#url').val();
+            var comment = $('#comment').val();
+            var cont = {
+                'author':author,
+                'email':email,
+                'url':url,
+                'comment':comment
+            };
+
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                url:"{% url 'blogs:messageboard' %}",
+                data:cont,
+                success:function (data) {
+                if (data.code === 200){
+                    alert('有参数为空！！');
+                }else if(data.code === 201){
+                    alert('邮箱格式不正确！！');
+                }else if (data.code === 202){
+                    alert('留言成功！！');
+                    location.href = data.next_url
+                }
+            }
+        })
+    });
+
+</script>
+
+{% endblock content %}
