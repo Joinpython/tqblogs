@@ -12,14 +12,14 @@
                 {% for article in article_list %}
                 <div class="article">
 					<div class="articleHeader">
-						<h1 class="articleTitle"><a href="#">{{ article.title }}</a></h1>
+						<h1 class="articleTitle"><a href="{% url 'blogs:detail' article.id %}">{{ article.title }}</a></h1>
 						<span class="cate-Div">
 							<i class="fa fa-map-marker"></i>{{ article.category }}</span>
 					</div>
 					<div class="articleBody clearfix">
 						<!--缩略图-->
 						<div class="articleThumb">
-							<a href="#"><img src="{% static article.images %}" alt="{{ article.title }}"></a>
+							<a href="{% url 'blogs:detail' article.id %}"><img src="{% static article.images %}" alt="{{ article.title }}"></a>
 						</div>
 						<!--摘要-->
 						<div class="articleFeed">
@@ -30,8 +30,8 @@
 						<ul class="articleStatu">
 							<li><i class="fa fa-calendar"></i>{{ article.date }}</li>
 							<li><i class="fa fa-eye"></i>{{ article.count }}次浏览</li>
-							<li><a href="https://www.busyboy.cn/?cat=18"><i class="fa fa-folder-o"></i>
-							</a><a href="https://www.busyboy.cn/?cat=18" rel="category">{{ article.category }}</a></li>
+							<li><a href="{% url 'blogs:article' article.type_id %}"><i class="fa fa-folder-o"></i>
+							</a><a href="{% url 'blogs:article' article.type_id %}" rel="category">{{ article.category }}</a></li>
 						</ul>
 						<a href="{% url 'blogs:detail' article.id %}" class="btn btn-readmore btn-info btn-md">阅读更多</a>
 					</div>

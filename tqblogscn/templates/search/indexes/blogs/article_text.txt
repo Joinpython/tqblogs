@@ -4,4 +4,3 @@
 {{ object.description }}
 {{ object.content }}
 {{ object.category }}
-{{ object.tag }}

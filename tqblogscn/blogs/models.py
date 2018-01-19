@@ -3,25 +3,20 @@ from db.base import BaseModels
 from utils.enums import *
 from datetime import datetime
 from DjangoUeditor.models import UEditorField
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
 
-# 标签
-class Tag(models.Model):
-    name = models.CharField(max_length=40, verbose_name='标签')
+LEXERS = [item for item in get_all_lexers() if item[1]]
+LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
-    class Meta:
-        verbose_name = '标签'
-        verbose_name_plural = verbose_name
-        ordering = ['-id']
-
-    def __str__(self):
-        return self.name
 
 # 分类
 class Category(models.Model):
-    categor = models.CharField(max_length=40, verbose_name='分类')
+    categor = models.CharField(max_length=40, verbose_name='标签')
 
     class Meta:
-        verbose_name = '分类'
+        verbose_name = '标签'
         verbose_name_plural = verbose_name
         ordering = ['-id']
 
@@ -49,20 +44,17 @@ class ArticleManager(models.Manager):
     # sort = 'new' >> 按照创建时间排序
     # sort = 'hot' >> 按照浏览量排序
     # sort = 'default' >> 按照默认排序
-    def get_article_by_type(self, category,limit):
+    def get_article_by_type_id(self, type_id,limit):
         '''根据文章id查询文章信息'''
         # 查询数据
-        if category == 'category':
-            order_by =('-category',)
-        else:
-            order_by = ('-create_time',)
+        try:
+            article_list = self.get(type_id=type_id)
 
-        article_list = self.filter().order_by(*order_by)
-
-        if limit:
-            article_list = article_list[:limit]
+        except self.model.DoesNotExist:
+            article_list = None
 
         return article_list
+
 
     # 根据创建时间来查询文章
     def get_article_by_create_time(self,limit=None, sort='default'):
@@ -94,7 +86,8 @@ class ArticleManager(models.Manager):
 class Article(BaseModels):
 
     article_id_choices = ((k, v) for k, v in ARTICLE_TYPE.items())
-    type_id = models.SmallIntegerField(default=PYTHON, choices=article_id_choices, verbose_name='文章类型')
+    type_id = models.SmallIntegerField(default=PYTHON, choices=article_id_choices, verbose_name='id')
+    type = models.CharField(default='python',verbose_name='文章类型',max_length=50)
     title = models.CharField(max_length=40, verbose_name='博文标题')
     author = models.CharField(default='漂泊在北京', max_length=20, verbose_name='博文作者')
     count = models.PositiveIntegerField(default=0, verbose_name='浏览量')
@@ -102,8 +95,7 @@ class Article(BaseModels):
     images = models.ImageField(upload_to='images', verbose_name='博文图片')
     description = models.TextField(verbose_name='博文简介')
     content = UEditorField(width=800, height=600,imagePath='article/images/', filePath='article/file/', verbose_name='博文内容')
-    category = models.ForeignKey(Category, blank=True, null=True, verbose_name='分类')
-    tag = models.ManyToManyField(Tag, verbose_name='标签')
+    category = models.ForeignKey(Category, blank=True, null=True, verbose_name='标签')
 
     def views_count(self):
         self.count += 1

@@ -9,7 +9,7 @@ SECRET_KEY = '68pc0oe+$7ze(u1bpg==c@ir)4hh-ki-2ex-k0f9p@=6f^%^=-'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'xadmin',
@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     'gunicorn',
     'haystack',
     'DjangoUeditor',
-    'blogs',
+    'blogs.apps.BlogsConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -100,8 +101,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_ROOT = '/home/tqblogs/workspace/tqblogscn/media/'
-
+# 执行python manage.py collectstatic 以后静态文件路径
+STATIC_ROOT = '/home/tqblogs/project/tqblogscn/media/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -110,11 +111,7 @@ STATICFILES_FINDERS = (
 
 # 富文本编辑器配置
 MEDIA_ROOT = os.path.join(BASE_DIR, "static")
-TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'advanced',
-    'width': 600,
-    'height': 400,
-}
+
 
 # 全文搜索配置
 HAYSTACK_CONNECTIONS = {
@@ -129,4 +126,13 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6 # 指定搜索结果每页的条数
 
 
+
+# restfull 配置
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 

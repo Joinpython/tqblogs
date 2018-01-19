@@ -1,12 +1,20 @@
 
 import xadmin
 from xadmin import views
-from blogs.models import EmailVerifyRecord, Article, Tag, Category, Comment, MessageBoard, Links
+from blogs.models import EmailVerifyRecord, Article, Category, Comment, MessageBoard, Links
 
+
+
+class BaseSetting(object):
+    enable_themes = True
+    use_bootswatch = True
+    menu_style = 'accordion'
+
+xadmin.site.register(views.BaseAdminView, BaseSetting)
 
 class GlobalSetting(object):
     site_title = "博客管理系统"
-    site_footer = "www.tqblogs.cn"
+    site_footer = "黔ICP备17011880号-2"
     menu_style = "accordion"
 
 xadmin.site.register(views.CommAdminView, GlobalSetting)
@@ -19,7 +27,7 @@ class EmailVerifyRecordAdmin(object):
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 
 class ArticleAdmin(object):
-    list_display = ['title','date','author','category','tag','count']
+    list_display = ['title','date','author','category','count']
     ordering = ['-count']
     list_per_page = 20
     style_fields = {"content": "ueditor"}
@@ -32,12 +40,6 @@ class CommentAdmin(object):
     list_per_page = 20
 
 xadmin.site.register(Comment,CommentAdmin)
-
-class TagAdmin(object):
-    list_per_page = 20
-
-xadmin.site.register(Tag, TagAdmin)
-
 
 class CategoryAdmin(object):
     list_per_page = 20
@@ -58,12 +60,6 @@ class MessageBoardAdmin(object):
 xadmin.site.register(MessageBoard, MessageBoardAdmin)
 
 
-class BaseSetting(object):
-    enable_themes = True
-    use_bootswatch = True
-    menu_style = 'accordion'
-
-xadmin.site.register(views.BaseAdminView, BaseSetting)
 
 
 

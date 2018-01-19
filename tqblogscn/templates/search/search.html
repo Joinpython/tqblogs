@@ -15,14 +15,14 @@
             </tr>
         </table>
         {% if query %}
-            <h3>Results</h3>
+            <h3>搜索结果：</h3>
 
             {% for result in page.object_list %}
                 <p>
                     <a href="{% url 'blogs:detail' result.object.id %}">{{ result.object.title }}</a>
                 </p>
             {% empty %}
-                <p>No results found.</p>
+                <p>没有找到哦。。。。。</p>
             {% endfor %}
 
             {% if page.has_previous or page.has_next %}

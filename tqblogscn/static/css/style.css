@@ -213,8 +213,8 @@ header
 	font-size: 28px;
 }
 .toptext{
-	background: #31b0d5;
-	color:#fff;
+	background: lightslategray;
+	color:#4d4d4d;
 	line-height: 48px;
 	transition: all 0.3s;
 }
@@ -734,7 +734,7 @@ media query
 		font-weight: normal;
 	}
 	.error404{
-		background: url('images/m404.jpg') no-repeat center center;
+		background: url('../images/404.jpg') no-repeat center center;
 	}
 }
 /*

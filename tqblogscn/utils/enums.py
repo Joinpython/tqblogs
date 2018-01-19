@@ -1,25 +1,30 @@
 
 PYTHON = 1
-HTML5 = 2
-CSS3 = 3
-JAVASCRIPT = 4
-JQUERY = 5
-MYSQL = 6
-MONGODB = 7
-REDIS = 8
-SCRAPY = 9
-DJANGO = 10
+NOSE = 2
+JAVASCRIPT = 3
+MYSQL = 4
+MONGODB = 5
+REDIS = 6
+SCRAPY = 7
+DJANGO = 8
+TORNADO = 9
+LINUX = 10
+GO = 11
+CHAT = 12
+
 
 ARTICLE_TYPE = {
     PYTHON:'python',
-    HTML5: 'html5',
-    CSS3: 'css3',
+    NOSE:'前端html和css',
     JAVASCRIPT: 'javascript',
-    JQUERY: 'jquery',
     MYSQL: 'mysql',
     MONGODB: 'mongodb',
     REDIS: 'redis',
     SCRAPY: '爬虫',
     DJANGO: 'django',
+    TORNADO:'tornado',
+    LINUX: 'linux',
+    GO: 'go',
+    CHAT:'闲谈',
 }
 
