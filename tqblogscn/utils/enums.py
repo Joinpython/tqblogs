@@ -3,14 +3,13 @@ PYTHON = 1
 NOSE = 2
 JAVASCRIPT = 3
 MYSQL = 4
-MONGODB = 5
-REDIS = 6
-SCRAPY = 7
-DJANGO = 8
-TORNADO = 9
-LINUX = 10
-GO = 11
-CHAT = 12
+REDIS = 5
+SCRAPY = 6
+DJANGO = 7
+TORNADO = 8
+LINUX = 9
+GO = 10
+CHAT = 11
 
 
 ARTICLE_TYPE = {
@@ -18,7 +17,6 @@ ARTICLE_TYPE = {
     NOSE:'前端html和css',
     JAVASCRIPT: 'javascript',
     MYSQL: 'mysql',
-    MONGODB: 'mongodb',
     REDIS: 'redis',
     SCRAPY: '爬虫',
     DJANGO: 'django',

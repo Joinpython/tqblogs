@@ -36,14 +36,13 @@
                     <a class="navbar-brand" href="{% url 'blogs:article' 2 %}">前端</a>
                     <a class="navbar-brand" href="{% url 'blogs:article' 3 %}">Javascript</a>
                     <a class="navbar-brand" href="{% url 'blogs:article' 4 %}">Mysql</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 5 %}">MongoDB</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 6 %}">Redis</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 7 %}">Scrapy</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 8 %}">Django</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 9 %}">Tornado</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 10 %}">Linux</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 11 %}">Go</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 12 %}">闲谈</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 5 %}">Redis</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 6 %}">爬虫</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 7 %}">Django</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 8 %}">Tornado</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 9 %}">Linux</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 10 %}">Go</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 11 %}">闲谈</a>
                     <a class="navbar-brand" href="{% url 'blogs:messageboard' %}">留言板</a>
                      <form class="navbar-form navbar-left" role="search" action="{% url 'haystack:haystack_search' %}" method="post">
                         {% csrf_token %}
@@ -91,7 +90,7 @@
                             <h4 class="title">友情链接</h4>
                                 <div class="box friend-links clearfix">
                                     {% for link in link %}
-                                    <li><a href="{{ link.url  }}" target="_blank">{{ link.title }}</a></li>
+                                    <li><a href="{{ link.url  }}" target="_blank" title="{{ link.description}}">{{ link.title }}</a></li>
                                     {% endfor %}
                                 </div>
                             </div>

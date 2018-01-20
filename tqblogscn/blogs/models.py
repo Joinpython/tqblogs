@@ -87,7 +87,7 @@ class Article(BaseModels):
 
     article_id_choices = ((k, v) for k, v in ARTICLE_TYPE.items())
     type_id = models.SmallIntegerField(default=PYTHON, choices=article_id_choices, verbose_name='id')
-    type = models.CharField(default='python',verbose_name='文章类型',max_length=50)
+    type = models.CharField(default='python', choices=article_id_choices, verbose_name='博文类型',max_length=40)
     title = models.CharField(max_length=40, verbose_name='博文标题')
     author = models.CharField(default='漂泊在北京', max_length=20, verbose_name='博文作者')
     count = models.PositiveIntegerField(default=0, verbose_name='浏览量')

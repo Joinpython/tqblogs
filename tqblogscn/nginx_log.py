@@ -8,7 +8,7 @@ def get_ip(ip):
     html = requests.get('http://ip.chinaz.com/'+ip)
     return html.text
 
-with open('/home/tqblogs/project/tqblogscn/access.log','r') as file:
+with open('/var/log/nginx/access.log','r') as file:
     data_list = []
     data_dict = {}
     for index,line in enumerate(file):

@@ -3,7 +3,7 @@ from blogs import views, views_item
 
 
 urlpatterns = [
-    url(r'^index/', views.index, name='index'),
+    url(r'^$', views.index, name='index'),
     url(r'^detail/(\d+)/', views.detail, name='detail'),
     url(r'^list/(\d+)/', views.list, name='list'),
     url(r'^article/(\d+)/', views.article, name='article'),
