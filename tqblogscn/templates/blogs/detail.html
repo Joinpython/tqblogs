@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}
-<title>博文详情 | 漂泊在北京的个人博客 </title>
+<title>{{ blogs.title}} | 漂泊在北京的个人博客 </title>
 {% endblock title %}
 {% block content %}
 <div class="articleDetail container">
@@ -13,7 +13,7 @@
 				<!-- 访问量 ...-->
 				    <div class="secTitleBar">
                         <ul>
-                            <li>分类：<a href="{% url 'blogs:list' 1 %}" rel="category">{{ blogs.category }}</a></li>
+                            <li>分类：<a href="{% url 'blogs:article' blogs.type_id %}" rel="category">{{ blogs.category }}</a></li>
                             <li>发表：{{ blogs.date }}</li>
                             <li>围观({{ blogs.count }})</li>
                             <li><a href="#">评论({{ content.count }})</a></li>
@@ -26,8 +26,8 @@
                     {{ blogs.content }}
                     {% endautoescape %}
                 </div>
-				<!-- 标签 -->
-				<div class="articleTagsBox" id="coment">
+		<!-- 标签 -->
+		<div class="articleTagsBox" id="coment">
                     <p style="font-size: 25px">评论列表：</p>
 					<ul>
                         {% for comment in content %}
@@ -43,7 +43,7 @@
 				<!-- 评论 -->
 				<div class="post_content">
 					<div id="comments" class="responsesWrapper">
-                    <h3 class="comments-title">共有 <span class="commentCount">0</span> 条评论</h3>
+                    <h3 class="comments-title">共有 <span class="commentCount">({{ content.count }})</span> 条评论</h3>
                         <form action="#" class="commentform" id="commentform">
                                 <div class="commentform-info">
                                     <label id="author_name" for="author">

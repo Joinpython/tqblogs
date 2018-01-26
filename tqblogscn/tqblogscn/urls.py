@@ -22,3 +22,7 @@ urlpatterns = [
     # url(r'api/',include('rest_framework.urls', namespace='rest_framework')),
     # url(r'^api-article/', include(router.urls))
 ]
+
+
+handler404 = views.page_not_found
+handler500 = views.page_error

@@ -7,9 +7,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 SECRET_KEY = '68pc0oe+$7ze(u1bpg==c@ir)4hh-ki-2ex-k0f9p@=6f^%^=-'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.tqblogs.cn','tqblogs.cn']
 
 INSTALLED_APPS = [
     'xadmin',
@@ -102,7 +102,7 @@ STATICFILES_DIRS = [
 ]
 
 # 执行python manage.py collectstatic 以后静态文件路径
-STATIC_ROOT = '/home/tqblogs/project/tqblogscn/media/'
+STATIC_ROOT = '/root/home/tqblogs/tqblogscn/media'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

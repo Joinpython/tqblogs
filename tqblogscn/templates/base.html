@@ -5,24 +5,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="个人博客，漂泊在北京个人博客，python个人博客，前端个人博客，博客，漂泊在北京，个人博客网站">
-	<meta name="description" content="漂泊在北京个人博客，是一个集web前端与python技术相关的个人博客网站，记录博主学习和成长中遇到的web前端和python技术问题及解决方法，并提供模板下载的个人博客网站。">
+    <meta name="description" content="漂泊在北京个人博客，是一个集web前端与python技术相关的个人博客网站，记录博主学习和成长中遇到的web前端和python技术问题及解决方法，并提供模板下载的个人博客网站。">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ form.media }}
     {% block title %}
     <title>博文首页 | 漂泊在北京的个人博客 </title>
     {% endblock title %}
-	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style/style.css' %}">
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	  <script src="{% static 'js/reload/html5shiv.min.js' %}"></script>
-	  <script src="{% static 'js/reload/respond.min.js' %}"></script>
-	<![endif]-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="{% static 'js/reload/html5shiv.min.js' %}"></script>
+        <script src="{% static 'js/reload/respond.min.js' %}"></script>
+    <![endif]-->
 </head>
 <body>
     <!-- banner -->
@@ -32,22 +32,14 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{% url 'blogs:index' %}">首页</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 1 %}">Python</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 2 %}">前端</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 3 %}">Javascript</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 4 %}">Mysql</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 5 %}">Redis</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 6 %}">爬虫</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 7 %}">Django</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 8 %}">Tornado</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 9 %}">Linux</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 10 %}">Go</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 11 %}">闲谈</a>
+                    <a class="navbar-brand" href="{% url 'blogs:resume' %}">个人简历</a>
                     <a class="navbar-brand" href="{% url 'blogs:messageboard' %}">留言板</a>
-                     <form class="navbar-form navbar-left" role="search" action="{% url 'haystack:haystack_search' %}" method="post">
+                    <a class="navbar-brand" href="{% url 'blogs:article' 1 %}">Python</a>
+                    <a class="navbar-brand" href="{% url 'blogs:article' 11 %}">贤文杂谈</a>
+                     <form class="navbar-form navbar-left" role="search" action="/search/" method="get">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="请输入关键词">
+                            <input name="q" type="text" class="form-control" placeholder="请输入关键词">
                         </div>
                         <button type="submit" class="btn btn-default">搜索</button>
                     </form>
@@ -78,7 +70,7 @@
                                 <div class="box tags clearfix">
                                     <ul class="post_tags">
                                         {% for article in article_list %}
-                                        <li><a href="{% url 'blogs:article' article.type_id%}" title="{{ article.category }}" class="linux">{{ article.category }}</a></li>
+                                        <li><a href="{% url 'blogs:categorys' article.category_id%}" title="{{ article.category }}" class="linux">{{ article.category }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -90,7 +82,7 @@
                             <h4 class="title">友情链接</h4>
                                 <div class="box friend-links clearfix">
                                     {% for link in link %}
-                                    <li><a href="{{ link.url  }}" target="_blank" title="{{ link.description}}">{{ link.title }}</a></li>
+                                    <li><a href="#" target="_blank" title="{{ link.description}}">{{ link.title }}</a></li>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -103,10 +95,10 @@
             <div class="container">
                 <div class="row">
                    <div class="col-md-12">
-                        <span>Copyright@<a href="#"></a>黔ICP备17011880号-2</span>
+                        <span>Copyright@2018  <a href="#"></a>  黔ICP备17011880号-2</span>
                         <span></span>
                         <span class="hidden-xs"><a href="{% url 'blogs:index' %}">漂泊在北京个人博客</a></span>
-                        <span class="hidden-xs">加载用时：</span><span>0.313s</span>
+                        <span class="hidden-xs">博主邮箱:</span><span>tqblogs@aliyun.com</span>
                    </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import re
-from django.shortcuts import render
+from django.shortcuts import render,render_to_response
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
@@ -13,7 +13,7 @@ category = category[:6]
 link = link[:4]
 
 
-# @cache_page(60*15)
+#@cache_page(60*3)
 def index(request):
     blogs = Article.objects.all()
     article_list = blogs[:6]
@@ -102,7 +102,7 @@ def list(request, page):
 
 
 def article(request, page):
-    blogs = Article.objects.all()
+    blogs = Article.objects.get_article_by_type(type_id=page,limit=10)
     # 分页　每页显示10
     paginator = Paginator(blogs, 10)
     num_page = paginator.num_pages
@@ -130,6 +130,38 @@ def article(request, page):
     }
 
     return render(request, 'blogs/article.html',context)
+
+
+def categorys(request, page):
+    blogs = Article.objects.get_article_by_category(category_id=page, limit=10)
+    # 分页　每页显示10
+    paginator = Paginator(blogs, 10)
+    num_page = paginator.num_pages
+
+    if page == '' or int(page) > num_page:
+        page = 1
+    else:
+        page = int(page)
+    # 返回值是一个page类的实例对象
+    blogs_list = paginator.page(page)
+
+    if num_page < 5:
+        pages = range(1, 6)
+    elif page <= 3:
+        pages = range(num_page - 4, num_page + 1)
+    else:
+        pages = range(page - 2, page + 3)
+
+    context = {
+        'article_list': blogs_list,
+        'blogs_list': blogs_list,
+        'pages': pages,
+        'category': category,
+        'link': link
+    }
+
+    return render(request, 'blogs/article.html',context)
+
 
 @csrf_exempt
 def messageboard(request):
@@ -169,4 +201,13 @@ def messageboard(request):
                                                           })
 
 
+@csrf_exempt
+def page_not_found(request):
+    return render_to_response('404.html')
 
+@csrf_exempt
+def page_error(request):
+    return render_to_response('500.html')
+
+def resume(request):
+    return render(request, 'blogs/resume.html')

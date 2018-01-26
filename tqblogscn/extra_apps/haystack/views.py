@@ -13,6 +13,9 @@ from haystack.query import EmptySearchQuerySet
 RESULTS_PER_PAGE = getattr(settings, 'HAYSTACK_SEARCH_RESULTS_PER_PAGE', 20)
 
 
+from blogs.models import Article, Category, Links
+
+
 class SearchView(object):
     template = 'search/search.html'
     extra_context = {}
@@ -127,12 +130,24 @@ class SearchView(object):
     def get_context(self):
         (paginator, page) = self.build_page()
 
+
+        category = Category.objects.all()
+        link = Links.objects.all()
+        category = category[:6]
+        link = link[:4]
+
+        blogs = Article.objects.all()
+        article_list = blogs[:6]
+
         context = {
             'query': self.query,
             'form': self.form,
             'page': page,
             'paginator': paginator,
             'suggestion': None,
+            'article_list': article_list,
+            'category': category,
+            'link': link
         }
 
         if hasattr(self.results, 'query') and self.results.query.backend.include_spelling:

@@ -41,22 +41,30 @@ class Links(models.Model):
 # 博客
 class ArticleManager(models.Manager):
     '''文章模型类管理器'''
-    # sort = 'new' >> 按照创建时间排序
-    # sort = 'hot' >> 按照浏览量排序
-    # sort = 'default' >> 按照默认排序
-    def get_article_by_type_id(self, type_id,limit):
+
+    def get_article_by_type(self, type_id,limit=None):
         '''根据文章id查询文章信息'''
         # 查询数据
-        try:
-            article_list = self.get(type_id=type_id)
+        order_by = ('type_id',)
 
-        except self.model.DoesNotExist:
-            article_list = None
+        article_list = self.filter(type_id=type_id).order_by(*order_by)
+
+        if limit:
+            article_list = article_list[:limit]
 
         return article_list
 
+    def get_article_by_category(self, category_id, limit=None):
+        order_by = ('category_id',)
 
-    # 根据创建时间来查询文章
+        article_list = self.filter(category_id=category_id).order_by(*order_by)
+
+        if limit:
+            article_list = article_list[:limit]
+
+        return article_list
+
+    #根据创建时间来查询文章
     def get_article_by_create_time(self,limit=None, sort='default'):
         if sort == 'new':
             order_by = ('-create_time',)
