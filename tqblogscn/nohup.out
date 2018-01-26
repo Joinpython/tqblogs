@@ -1,8 +1,0 @@
-[2018-01-25 11:00:45 +0800] [27581] [INFO] Starting gunicorn 19.7.1
-[2018-01-25 11:00:45 +0800] [27581] [INFO] Listening at: http://127.0.0.1:8000 (27581)
-[2018-01-25 11:00:45 +0800] [27581] [INFO] Using worker: sync
-[2018-01-25 11:00:45 +0800] [27584] [INFO] Booting worker with pid: 27584
-Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.884 seconds.
-Prefix dict has been built succesfully.
