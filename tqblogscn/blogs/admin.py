@@ -4,7 +4,6 @@ from xadmin import views
 from blogs.models import EmailVerifyRecord, Article, Category, Comment, MessageBoard, Links
 
 
-
 class BaseSetting(object):
     enable_themes = True
     use_bootswatch = True

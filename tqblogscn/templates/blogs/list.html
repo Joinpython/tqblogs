@@ -10,7 +10,7 @@
 			<div class="col-md-12">
 				<!--single article-->
                 {% for article in article_list %}
-                <div class="article">
+                <div class="article" style="margin-top: -310px">
 					<div class="articleHeader">
 						<h1 class="articleTitle"><a href="{% url 'blogs:detail' article.id %}">{{ article.title }}</a></h1>
 					</div>

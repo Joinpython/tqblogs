@@ -12,9 +12,10 @@ GO = 10
 CHAT = 11
 
 
+
 ARTICLE_TYPE = {
     PYTHON:'python',
-    NOSE:'前端html和css',
+    NOSE:'html和css',
     JAVASCRIPT: 'javascript',
     MYSQL: 'mysql',
     REDIS: 'redis',
@@ -23,6 +24,6 @@ ARTICLE_TYPE = {
     TORNADO:'tornado',
     LINUX: 'linux',
     GO: 'go',
-    CHAT:'闲谈',
+    CHAT:'贤文杂谈',
 }
 

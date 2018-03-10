@@ -15,14 +15,13 @@ xversion.register_models()
 
 urlpatterns = [
     url(r'^xadmin/', include(xadmin.site.urls)),
-    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
     url(r'^search/', include('haystack.urls', namespace='haystack')),
     url(r'^ueditor/', include('DjangoUeditor.urls', namespace='ueditor')),
     url(r'^', include('blogs.urls', namespace='blogs')),
     # url(r'api/',include('rest_framework.urls', namespace='rest_framework')),
     # url(r'^api-article/', include(router.urls))
 ]
-
 
 handler404 = views.page_not_found
 handler500 = views.page_error

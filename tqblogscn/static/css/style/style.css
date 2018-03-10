@@ -2,7 +2,7 @@
 html,body,header,nav,footer,div,ul,ol,li,p,form,input,a,span,em,i,strong,b,font,img{
 		margin:0; padding:0; list-style:none; border:none;}
 body{font-family:"微软雅黑"; font-size:14px;}
-a{text-align:center; text-decoration:none; outline:none;}
+a{text-align:left; text-decoration:none; outline:none;}
 input{outline:none;}
 em{font-style:normal;}
 

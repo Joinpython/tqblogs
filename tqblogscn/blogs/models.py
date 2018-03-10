@@ -3,17 +3,11 @@ from db.base import BaseModels
 from utils.enums import *
 from datetime import datetime
 from DjangoUeditor.models import UEditorField
-from pygments.lexers import get_all_lexers
-from pygments.styles import get_all_styles
-
-LEXERS = [item for item in get_all_lexers() if item[1]]
-LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
-STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 
 # 分类
 class Category(models.Model):
-    categor = models.CharField(max_length=40, verbose_name='标签')
+    categor = models.CharField(max_length=56, verbose_name='标签')
 
     class Meta:
         verbose_name = '标签'
@@ -23,11 +17,12 @@ class Category(models.Model):
     def __str__(self):
         return self.categor
 
+
 # 友情链接(links)模型
 class Links(models.Model):
     title = models.CharField(max_length=256, verbose_name='标题')
     description = models.CharField(max_length=256, verbose_name='描述')
-    callback_url = models.URLField(verbose_name='url')
+    callback_url = models.URLField(verbose_name='链接地址')
     date_publish = models.DateTimeField(auto_now_add=True, verbose_name='发布时间')
 
     class Meta:
@@ -38,7 +33,7 @@ class Links(models.Model):
     def __str__(self):
         return self.title
 
-# 博客
+# 博客管理
 class ArticleManager(models.Manager):
     '''文章模型类管理器'''
 
@@ -90,7 +85,7 @@ class ArticleManager(models.Manager):
         return article_list
 
 
-# 博客管理
+# 博客
 class Article(BaseModels):
 
     article_id_choices = ((k, v) for k, v in ARTICLE_TYPE.items())
@@ -100,9 +95,9 @@ class Article(BaseModels):
     author = models.CharField(default='漂泊在北京', max_length=20, verbose_name='博文作者')
     count = models.PositiveIntegerField(default=0, verbose_name='浏览量')
     date = models.DateField(verbose_name='发布时间')
-    images = models.ImageField(upload_to='images', verbose_name='博文图片')
+    images = models.ImageField(upload_to='images/', verbose_name='博文图片')
     description = models.TextField(verbose_name='博文简介')
-    content = UEditorField(width=800, height=600,imagePath='article/images/', filePath='article/file/', verbose_name='博文内容')
+    content = UEditorField(width=800, height=600,imagePath='upload/images/', filePath='upload/files/', verbose_name='博文内容')
     category = models.ForeignKey(Category, blank=True, null=True, verbose_name='标签')
 
     def views_count(self):

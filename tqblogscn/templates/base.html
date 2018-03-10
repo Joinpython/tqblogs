@@ -4,16 +4,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="个人博客，漂泊在北京个人博客，python个人博客，前端个人博客，博客，漂泊在北京，个人博客网站">
-    <meta name="description" content="漂泊在北京个人博客，是一个集web前端与python技术相关的个人博客网站，记录博主学习和成长中遇到的web前端和python技术问题及解决方法，并提供模板下载的个人博客网站。">
+    <meta name="keywords" content="个人博客，漂泊在北京个人博客，python个人博客，前端个人博客，博客，漂泊在北京，个人博客网站,个人资源下载">
+    <meta name="description" content="漂泊在北京个人博客，是一个集web前端与python技术相关的个人博客网站，主要记录博主学习和成长中遇到的web前端和python技术问题及解决方法，并提供资源和模板下载的个人博客网站。">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ form.media }}
     {% block title %}
     <title>博文首页 | 漂泊在北京的个人博客 </title>
     {% endblock title %}
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/js/jquery-3.1.0.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style/style.css' %}">
@@ -25,26 +28,92 @@
     <![endif]-->
 </head>
 <body>
-    <!-- banner -->
-    <div class="banner">
     <!--导航栏-->
-        <nav class="navbar navbar-default" role="navigation">
+    <div class="navigation">
+        <nav class="navbar navbar-fixed-top navbar-default " role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed shy" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" href="{% url 'blogs:index' %}">首页</a>
-                    <a class="navbar-brand" href="{% url 'blogs:resume' %}">个人简历</a>
-                    <a class="navbar-brand" href="{% url 'blogs:messageboard' %}">留言板</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 1 %}">Python</a>
-                    <a class="navbar-brand" href="{% url 'blogs:article' 11 %}">贤文杂谈</a>
-                     <form class="navbar-form navbar-left" role="search" action="/search/" method="get">
-                        {% csrf_token %}
+                    </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文章<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'blogs:article' 1 %}">Python</a></li>
+                                <li><a href="{% url 'blogs:article' 2 %}">html和css</a></li>
+                                <li><a href="{% url 'blogs:article' 3 %}">JavaScript</a></li>
+                                <li><a href="{% url 'blogs:article' 4 %}">mysql</a></li>
+                                <li><a href="{% url 'blogs:article' 5 %}">redis</a></li>
+                                <li><a href="{% url 'blogs:article' 6 %}">爬虫</a></li>
+                                <li><a href="{% url 'blogs:article' 7 %}">django</a></li>
+                                <li><a href="{% url 'blogs:article' 8 %}">tornado</a></li>
+                                <li><a href="{% url 'blogs:article' 9 %}">linux</a></li>
+                                <li><a href="{% url 'blogs:article' 10 %}">golang</a></li>
+                                <li><a href="{% url 'blogs:article' 11 %}">闲文杂谈</a></li>
+                              </ul>
+                            </li>
+                           <li class="dropdown">
+                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电影 <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">热门电影</a></li>
+                                <li><a href="#">高分电影</a></li>
+                                <li><a href="#">博主推荐</a></li>
+                              </ul>
+                        </li>
+                           <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">旅行<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">旅游攻略</a></li>
+                            <li><a href="#">旅游美图</a></li>
+                            <li><a href="#">热门景点</a></li>
+                            <li><a href="#">博主推荐</a></li>
+                          </ul>
+                        </li>
+                           <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">书店<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">书店精选</a></li>
+                            <li><a href="#">推荐书店</a></li>
+                            <li><a href="#">博主小书店</a></li>
+                          </ul>
+                        </li>
+                           <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资源<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Python学习书籍</a></li>
+                            <li><a href="#">Python学习视频</a></li>
+                            <li><a href="#">前端学习视频</a></li>
+                            <li><a href="#">机器学习学习视频</a></li>
+                          </ul>
+                        </li>
+                          <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留言版<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">关于我</a></li>
+                            <li><a href="{% url 'blogs:resume' %}">个人简历</a></li>
+                            <li><a href="{% url 'blogs:messageboard' %}">留言版直通车</a></li>
+                          </ul>
+                        </li>
+
+                      </ul>
+                      <form class="navbar-form navbar-left" role="search" action="/search/" method="get">
+                          {% csrf_token %}
                         <div class="form-group">
-                            <input name="q" type="text" class="form-control" placeholder="请输入关键词">
+                          <input name='q' type="text" class="form-control" placeholder="请输入关键字进行搜素">
                         </div>
                         <button type="submit" class="btn btn-default">搜索</button>
-                    </form>
+                      </form>
+                    </div>
                 </div>
-            </div>
         </nav>
     </div>
 {% block content %}
@@ -108,7 +177,6 @@
 	<span class="topicon"><i class="fa fa-angle-up"></i></span>
 	<span class="toptext">顶部</span>
 </a>
-
     <script src="{% static 'js/lib/jquery-1.11.0.min.js' %}" type="text/javascript"></script>
 	<script>window.jQuery || document.write('<script src="js//lib/jquery-1.11.0.min.js"><\/script>')</script>
 	<script type="text/javascript" src="{% static 'js/lib/main.js' %}"></script>
@@ -118,7 +186,7 @@
 	<script>
 		$('.to-top').toTop({
 			position:false,
-			offset:800
+			offset:500
 		});
 	</script>
 </body>

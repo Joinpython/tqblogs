@@ -12,12 +12,11 @@ link = Links.objects.all()
 category = category[:6]
 link = link[:4]
 
-
 #@cache_page(60*3)
 def index(request):
     blogs = Article.objects.all()
     article_list = blogs[:6]
-    Carousel_map = Article.objects.get_article_by_create_time(limit=4, sort='new')
+    Carousel_map = Article.objects.get_article_by_create_time(limit=6, sort='new')
 
     context = {
         'article_list':article_list,
