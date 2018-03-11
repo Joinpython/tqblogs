@@ -16,10 +16,10 @@
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
           <div class="item active">
-              <a href=""><img src="{% static 'bootstrap/images/android-studio-banner.jpg' %}" alt="First slide"></a>
+              <a href="{% url 'blogs:detail' 35 %}"><img src="{% static 'images/1516003361662.jpg' %}" alt="First slide"></a>
              <div class="carousel-caption">
-                 <h3>Android 应用开发</h3>
-                 <p>最新的技术结合，无论使用HTML5或Unity都能打造出一款结合虚拟现实的App应用</p>
+                 <h3>20几岁是可以勇敢去做所有决定的年纪</h3>
+                 <p></p>
                 </div>
             </div>
             {% for picture in carousel %}
@@ -27,7 +27,7 @@
               <a href="{% url 'blogs:detail' picture.id %}"><img src="{% static picture.images %}" alt="{{ picture.description  }}"></a>
              <div class="carousel-caption">
                  <h3>{{ picture.title }}</h3>
-                 <p>{{ picture.description }}</p>
+                 <p></p>
                 </div>
             </div>
             {% endfor %}
@@ -56,7 +56,7 @@
                 <div class="articleBody clearfix">
                     <!--缩略图-->
                     <div class="articleThumb">
-                        <a href="{% url 'blogs:detail' article.id %}"><img src="{% static 'images/html01_LUL4jIK.jpeg' %}" alt="{{ article.title }}" title="{{ article.title }}"></a>
+                        <a href="{% url 'blogs:detail' article.id %}"><img src="{% static article.images %}" alt="{{ article.title }}" title="{{ article.title }}"></a>
                     </div>
                     <!--摘要-->
                     <div class="articleFeed">

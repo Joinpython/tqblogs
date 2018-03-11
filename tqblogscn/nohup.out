@@ -1,0 +1,49 @@
+[2018-03-10 17:44:06 +0800] [21150] [INFO] Starting gunicorn 19.7.1
+[2018-03-10 17:44:06 +0800] [21150] [INFO] Listening at: http://127.0.0.1:8000 (21150)
+[2018-03-10 17:44:06 +0800] [21150] [INFO] Using worker: sync
+[2018-03-10 17:44:06 +0800] [21153] [INFO] Booting worker with pid: 21153
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.943 seconds.
+Prefix dict has been built succesfully.
+[2018-03-11 12:54:44 +0800] [27603] [INFO] Starting gunicorn 19.7.1
+[2018-03-11 12:54:44 +0800] [27603] [INFO] Listening at: http://127.0.0.1:8000 (27603)
+[2018-03-11 12:54:44 +0800] [27603] [INFO] Using worker: sync
+[2018-03-11 12:54:44 +0800] [27606] [INFO] Booting worker with pid: 27606
+[2018-03-11 12:58:39 +0800] [27606] [INFO] Parent changed, shutting down: <Worker 27606>
+[2018-03-11 12:58:39 +0800] [27606] [INFO] Worker exiting (pid: 27606)
+[2018-03-11 12:59:19 +0800] [27669] [INFO] Starting gunicorn 19.7.1
+[2018-03-11 12:59:19 +0800] [27669] [INFO] Listening at: http://127.0.0.1:8000 (27669)
+[2018-03-11 12:59:19 +0800] [27669] [INFO] Using worker: sync
+[2018-03-11 12:59:19 +0800] [27672] [INFO] Booting worker with pid: 27672
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.887 seconds.
+Prefix dict has been built succesfully.
+[2018-03-11 13:04:19 +0800] [27672] [INFO] Parent changed, shutting down: <Worker 27672>
+[2018-03-11 13:04:19 +0800] [27672] [INFO] Worker exiting (pid: 27672)
+[2018-03-11 13:05:04 +0800] [27720] [INFO] Starting gunicorn 19.7.1
+[2018-03-11 13:05:04 +0800] [27720] [INFO] Listening at: http://127.0.0.1:8000 (27720)
+[2018-03-11 13:05:04 +0800] [27720] [INFO] Using worker: sync
+[2018-03-11 13:05:04 +0800] [27723] [INFO] Booting worker with pid: 27723
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.895 seconds.
+Prefix dict has been built succesfully.
+[2018-03-11 13:39:38 +0800] [27720] [INFO] Handling signal: hup
+[2018-03-11 13:39:38 +0800] [27720] [INFO] Hang up: Master
+[2018-03-11 13:39:38 +0800] [27961] [INFO] Booting worker with pid: 27961
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.890 seconds.
+Prefix dict has been built succesfully.
+[2018-03-11 14:58:06 +0800] [27961] [INFO] Parent changed, shutting down: <Worker 27961>
+[2018-03-11 14:58:07 +0800] [27961] [INFO] Worker exiting (pid: 27961)
+[2018-03-11 14:59:02 +0800] [28551] [INFO] Starting gunicorn 19.7.1
+[2018-03-11 14:59:02 +0800] [28551] [INFO] Listening at: http://127.0.0.1:8000 (28551)
+[2018-03-11 14:59:02 +0800] [28551] [INFO] Using worker: sync
+[2018-03-11 14:59:02 +0800] [28554] [INFO] Booting worker with pid: 28554
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.868 seconds.
+Prefix dict has been built succesfully.

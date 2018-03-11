@@ -14,7 +14,7 @@ link = link[:4]
 
 #@cache_page(60*3)
 def index(request):
-    blogs = Article.objects.all()
+    blogs = Article.objects.get_article_by_create_time(limit=6, sort='new')
     article_list = blogs[:6]
     Carousel_map = Article.objects.get_article_by_create_time(limit=6, sort='new')
 

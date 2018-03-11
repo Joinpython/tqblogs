@@ -5,12 +5,11 @@
 {% endblock title %}
 {% block content %}
 {% if query %}
-<div class="articleList container">
-    <h3>搜索结果：</h3>
+<div class="articleList container" style="margin-top: 88px">
     <div class="row">
         <div class="col-md-12">
             {% for result in page.object_list %}
-                <div class="article" style="margin-top: -310px">
+                <div class="article">
                     <div class="articleHeader">
                         <h1 class="articleTitle">
                             <a href="{% url 'blogs:detail' result.object.id %}">{{ result.object.title }}
