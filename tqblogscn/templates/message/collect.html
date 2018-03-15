@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+<title>博客收录 | 漂泊在北京的个人博客 </title>
+{% endblock title %}
+{% block content %}
+<!--文章列表-->
+<div class="articleList container" style="margin-top: 88px">
+    <div class="row">
+        <div class="col-md-12">
+            {% for blogs in collect_blogs %}
+            <!--single article-->
+            <div class="article">
+                <div class="articleHeader">
+                    <h1 class="articleTitle"><a href="{{ blogs.url }}">{{ blogs.title }}（{{ blogs.url }}） </a></h1>
+                </div>
+                <div class="articleBody clearfix">
+                    <!--缩略图-->
+                    <div class="articleThumb">
+                        <a href="{{ blogs.url }}"><img src="{% static blogs.images %}" alt="{{ blogs.abstract }}" title="{{ blogs.title }}"></a>
+                    </div>
+                    <!--摘要-->
+                    <div class="articleFeed">
+                        <p>{{ blogs.abstract }}</p>
+                    </div>
+                    <!--tags-->
+                    <div class="articleTags">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="articleFooter clearfix">
+                    <ul class="articleStatu">
+                        <li><i class="fa fa-calendar"></i>{{ blogs.create_time }}</li>
+                        <li><a href="#"><i class="fa fa-folder-o"></i></a>
+                            <a href="#" rel="category">博客收录</a>
+                        </li>
+                    </ul>
+                    <a href="{{ blogs.url }}" class="btn btn-readmore btn-info btn-md">直通车</a>
+                </div>
+            </div>
+            <!--single article-->
+            {% endfor %}
+            </div>
+        </div>
+</div>
+<div class="container pageNav">
+    <div class="row">
+        <div class="col-md-12">
+            <nav>
+              <ul class="pagination">
+                  <li><button type="button" id="btn"><a class="next page-numbers" href="{% url 'blogs:list' 1 %}">下一页</a></button></li>
+              </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

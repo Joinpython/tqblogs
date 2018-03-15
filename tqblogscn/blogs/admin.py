@@ -2,7 +2,7 @@
 import xadmin
 from xadmin import views
 from blogs.models import EmailVerifyRecord, Article, Category, Comment, MessageBoard, Links
-
+from movies.models import Movies
 
 class BaseSetting(object):
     enable_themes = True
@@ -57,6 +57,11 @@ class MessageBoardAdmin(object):
     list_per_page = 20
 
 xadmin.site.register(MessageBoard, MessageBoardAdmin)
+
+
+
+
+
 
 
 

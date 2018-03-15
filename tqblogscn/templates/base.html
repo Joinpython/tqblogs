@@ -7,6 +7,7 @@
     <meta name="keywords" content="个人博客，漂泊在北京个人博客，python个人博客，前端个人博客，博客，漂泊在北京，个人博客网站,个人资源下载">
     <meta name="description" content="漂泊在北京个人博客，是一个集web前端与python技术相关的个人博客网站，主要记录博主学习和成长中遇到的web前端和python技术问题及解决方法，并提供资源和模板下载的个人博客网站。">
     <meta name="HandheldFriendly" content="True">
+    <meta name="author" content="漂泊在北京，tqblogs@aliyun.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ form.media }}
     {% block title %}
@@ -64,36 +65,21 @@
                            <li class="dropdown">
                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电影 <span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                <li><a href="#">热门电影</a></li>
-                                <li><a href="#">高分电影</a></li>
-                                <li><a href="#">博主推荐</a></li>
+                                <li><a href="{% url 'movies:hot_movies' %}">电影推荐</a></li>
+                                <li><a href="{% url 'movies:watch_movies' %}">观影小站</a></li>
                               </ul>
                         </li>
                            <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">旅行<span class="caret"></span></a>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资讯<span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="#">旅游攻略</a></li>
-                            <li><a href="#">旅游美图</a></li>
-                            <li><a href="#">热门景点</a></li>
-                            <li><a href="#">博主推荐</a></li>
-                          </ul>
-                        </li>
-                           <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">书店<span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">书店精选</a></li>
-                            <li><a href="#">推荐书店</a></li>
-                            <li><a href="#">博主小书店</a></li>
-                            <li><a href="#">寄给未来自己的一封信</a></li>
+                            <li><a href="{% url 'message:fresh_news' %}">新鲜事</a></li>
+                            <li><a href="{% url 'message:collect' %}">博客收录</a></li>
                           </ul>
                         </li>
                            <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资源<span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="#">Python学习书籍</a></li>
-                            <li><a href="#">Python学习视频</a></li>
-                            <li><a href="#">前端学习视频</a></li>
-                            <li><a href="#">机器学习学习视频</a></li>
+                            <li><a href="{% url 'study:download' %}">资源下载</a></li>
                           </ul>
                         </li>
                           <li class="dropdown">
@@ -101,10 +87,10 @@
                           <ul class="dropdown-menu">
                             <li><a href="#">关于我</a></li>
                             <li><a href="{% url 'blogs:resume' %}">个人简历</a></li>
-                            <li><a href="{% url 'blogs:messageboard' %}">留言版直通车</a></li>
+                            <li><a href="{% url 'blogs:messageboard' %}">留言版</a></li>
+                          　<li><a href="#">寄给未来自己的一封信</a></li>
                           </ul>
                         </li>
-
                       </ul>
                       <form class="navbar-form navbar-left" role="search" action="/search/" method="get">
                           {% csrf_token %}
@@ -128,39 +114,44 @@
                         <div class="widget">
                             <h4 class="title">分类目录</h4>
                             <div class="box category clearfix">
-                                {% for article in article_list %}
-                                <li class="cat-item cat-item-1"><a href="{% url 'blogs:article' article.type_id %}" title="{{ article.type }}">{{ article.type }}</a></li>
-                                {% endfor %}
+                                <li class="cat-item cat-item-1"><a href="{% url 'blogs:list'  1 %}" title="{{ article.type }}">文章</a></li>
+                                <li class="cat-item cat-item-1"><a href="{% url 'movies:hot_movies'%}" title="{{ article.type }}">电影推荐</a></li>
+                                <li class="cat-item cat-item-1"><a href="{% url 'movies:watch_movies' %}" title="{{ article.type }}">观影小站</a></li>
+                                <li class="cat-item cat-item-1"><a href="{% url 'message:fresh_news' %}" title="{{ article.type }}">新鲜事</a></li>
+                                <li class="cat-item cat-item-1"><a href="{% url 'message:collect' %}" title="{{ article.type }}">博客收录</a></li>
+                                <li class="cat-item cat-item-1"><a href="{% url 'study:download' %}" title="{{ article.type }}">资源下载</a></li>
+                                <li class="cat-item cat-item-1"><a href="{% url 'blogs:messageboard' %}" title="{{ article.type }}">留言板</a></li>
+                                <li class="cat-item cat-item-1"><a href="#" title="{{ article.type }}">关于我</a></li>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <h4 class="title">文章标签</h4>
-                                <div class="box tags clearfix">
-                                    <ul class="post_tags">
-                                        {% for article in article_list %}
-                                        <li><a href="{% url 'blogs:categorys' article.category_id%}" title="{{ article.category }}" class="linux">{{ article.category }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+{#                    <div class="col-md-3">#}
+{#                        <div class="widget">#}
+{#                            <h4 class="title">文章标签</h4>#}
+{#                                <div class="box tags clearfix">#}
+{#                                    <ul class="post_tags">#}
+{#                                        {% for article in article_list %}#}
+{#                                        <li><a href="{% url 'blogs:categorys' article.category_id%}" title="{{ article.category }}" class="linux">{{ article.category }}</a></li>#}
+{#                                        {% endfor %}#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
 
                      <div class="col-md-3">
                          <div class="widget">
                             <h4 class="title">友情链接</h4>
                                 <div class="box friend-links clearfix">
-                                    {% for link in link %}
-                                    <li><a href="#" target="_blank" title="{{ link.description}}">{{ link.title }}</a></li>
-                                    {% endfor %}
+                                    <li><a href="http://www.baidu.com" target="_blank" title="#">百度一下</a></li>
+                                    <li><a href="http://www.bing.com" target="_blank" title="#">必应一下</a></li>
+                                    <li><a href="http://www.google.com" target="_blank" title="#">谷歌一下</a></li>
+                                    <li><a href="http://www.tqblogs.cn" target="_blank" title="#">刷新一下</a></li>
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
         </div>
-
         <div class="copyright">
             <div class="container">
                 <div class="row">
@@ -174,7 +165,7 @@
             </div>
         </div>
     </footer>
-<a class="to-top" style="cursor: pointer; display: none;">
+    <a class="to-top" style="cursor: pointer; display: none;">
 	<span class="topicon"><i class="fa fa-angle-up"></i></span>
 	<span class="toptext">顶部</span>
 </a>

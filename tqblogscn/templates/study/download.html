@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+<title>资源下载 | 漂泊在北京的个人博客 </title>
+{% endblock %}
+{% block content %}
+<!--文章列表-->
+	<div class="articleList container" style="margin-top: 88px">
+		<div class="row">
+			<div class="col-md-12">
+				<!--single article-->
+                {% for study in study_list%}
+                <div class="article">
+					<div class="articleHeader">
+						<h1 class="articleTitle"><a href="{{ study.url }}">{{ study.title }}</a></h1>
+					</div>
+					<div class="articleBody clearfix">
+						<!--缩略图-->
+						<div class="articleThumb">
+							<a href="{{ study.url }}"><img src="{% static study.images %}" alt="{{ study.title }}"></a>
+						</div>
+						<!--摘要-->
+						<div class="articleFeed">
+							<p>{{ study.abstract }}</p>
+						</div>
+					</div>
+					<div class="articleFooter clearfix">
+						<ul class="articleStatu">
+							<li><i class="fa fa-calendar"></i>{{ study.create_time }}</li>
+							<li><a href="#"><i class="fa fa-folder-o"></i>
+							</a><a href="#" rel="category">{{ study.title }}</a></li>
+						</ul>
+						<a href="{{ study.url }}" class="btn btn-readmore btn-info btn-md">下载链接</a>
+					</div>
+				</div>
+                {% endfor %}
+            </div>
+		</div>
+	</div>
+<div class="container pageNav">
+		<div class="row">
+			<div class="col-md-12">
+				<nav>
+				  <ul class="pagination">
+                      {% if blogs_list.has_previous %}
+                           <li><a class="page-numbers" href="{% url 'blogs:list' blogs_list.previous_page_number %}">上一页</a></li>
+                      {% endif %}
+                        {% for pindex in pages %}
+                            {% if pindex == blogs_list.number %}
+                                <li><a class="page-numbers" href="{% url 'blogs:list' pindex %}">{{ pindex }}</a></li>
+                            {% else %}
+                                <li><a class="page-numbers" href="{% url 'blogs:list' pindex %}">{{ pindex }}</a></li>
+                            {% endif %}
+                        {%endfor %}
+                        {% if blogs_list.has_next %}
+                            <li><a class="next page-numbers" href="{% url 'blogs:list' blogs_list.next_page_number %}">下一页 »</a></li>
+                    {%  endif %}
+                  </ul>
+                </nav>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
