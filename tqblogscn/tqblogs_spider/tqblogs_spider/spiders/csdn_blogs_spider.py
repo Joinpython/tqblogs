@@ -36,7 +36,11 @@ class CsdnBlogsSpider(scrapy.Spider):
         # self.items['original_urls'] = url_list
         # self.items['views'] = views_list
 
+        # print(data)
+        # print(data['articles'])
+
         for item in data['articles']:
+            print(item)
             self.items['title'] = item['title']
             self.items['original_urls'] = item['url']
             self.items['views'] = item['views']

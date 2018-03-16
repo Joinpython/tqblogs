@@ -28,7 +28,8 @@ class SaveDataPipeline(object):
             passwd=settings.MYSQL_PASSWD,
             charset='utf8',
             use_unicode=False)
-        self.id = 80
+
+        self.id = 600
 
         # 通过cursor执行增删改查
         self.cursor = self.connect.cursor()

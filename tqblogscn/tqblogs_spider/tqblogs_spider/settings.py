@@ -69,7 +69,7 @@ DEFAULT_REQUEST_HEADERS = {
 ITEM_PIPELINES = {
    # 'tqblogs_spider.pipelines.TqblogsSpiderPipeline': 1,
    'tqblogs_spider.pipelines.SaveDataPipeline': 2,
-   'tqblogs_spider.pipelines.HotMoviesImagesPipeline': 3,
+   # 'tqblogs_spider.pipelines.HotMoviesImagesPipeline': 3,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
