@@ -1,5 +1,10 @@
+
+
+
 from django.db import models
 from db.base import BaseModels
+
+
 
 class Study(BaseModels):
     title = models.CharField(max_length=56, verbose_name='资源标题')

@@ -1,0 +1,78 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+    <style>
+        .loading{
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <input type="text" value="" id="website" placeholder="请输入你要爬取的网页：">
+    <button type="button" value="提交" id="btn">提交</button>
+    {% for num in list %}
+        <p>{{ num }}</p>
+    {% endfor %}
+    <script>
+        $('#btn').click(function () {
+
+            {#var loading = (function () {#}
+            {#    console.log('1111111');#}
+            {#    var $loading = $('body').append('<div id="loading"></div>');#}
+            {#    console.log('2222222');#}
+            {#    var show = function () {#}
+            {#        $loading.fadeIn();#}
+            {#    };#}
+            {##}
+            {#    var hide = function () {#}
+            {#        $loading.fadeOut();#}
+            {#    };#}
+            {##}
+            {#    return {#}
+            {#        show:show,#}
+            {#        hide:hide#}
+            {#    }#}
+            {##}
+            {# })();#}
+
+            var mes = $('#website').val();
+
+            params = {
+                'mes':mes
+            };
+            {#alert(mes);#}
+            {#loading.show();#}
+
+            $.ajax({
+                type:'post',
+                dataType:'json',
+                url:'{% url "spiders:kr36" %}',
+                data:params,
+                success:function (data) {
+                    if(data.code === 200){
+                        alert(data.mess);
+                        $('#btn').next().show(data.mess)
+                    }
+                 }
+            });
+                {#.done(function () {#}
+                {#    alert('success!!');#}
+                {# })#}
+                {#.fail(function () {#}
+                {#    alert('error!!')#}
+                {# })#}
+                {#.always(function () {#}
+                {#    loading.hide();#}
+                {#    alert('complete')#}
+                {# })#}
+        })
+    </script>
+
+</body>
+</html>

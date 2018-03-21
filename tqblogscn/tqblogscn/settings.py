@@ -129,13 +129,13 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6 # 指定搜索结果每页的条数
 
 
+#　发送邮件设置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# restfull 配置
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'tqblogs@163.com'
+EMAIL_HOST_PASSWORD = 'ping127.0.0.1'
+DEFAULT_FROM_EMAIL = 'tqblogs <tqblogs@163.com>'
 

@@ -12,23 +12,21 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-
 @csrf_exempt
 def index_item(request):
-    if request.method == "GET":
+    if request.method == "POST":
         blogs = Article.objects.all()
         serializer = ArticleSerializer(blogs, many=True)
 
-        return JsonResponse(serializer.data,safe=False)
+        return JsonResponse({'code':200, 'message':serializer.data, 'safe':False})
 
-    elif request.method == "POST":
-        serializer = ArticleSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    # elif request.method == "POST":
+    #     serializer = ArticleSerializer(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 def comment_item(request):

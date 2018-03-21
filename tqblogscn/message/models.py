@@ -10,6 +10,7 @@ class FreshNews(BaseModels):
     views = models.CharField(max_length=12, verbose_name='新鲜度')
     category = models.CharField(max_length=24, verbose_name='来源')
 
+
     class Meta:
         verbose_name = '新鲜事'
         verbose_name_plural = verbose_name

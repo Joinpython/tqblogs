@@ -46,40 +46,7 @@
 <!--文章列表-->
 <div class="articleList container">
     <div class="row">
-        <div class="col-md-12">
-            {% for article in article_list %}
-            <!--single article-->
-            <div class="article">
-                <div class="articleHeader">
-                    <h1 class="articleTitle"><a href="{% url 'blogs:detail' article.id %}">{{ article.title }}</a></h1>
-                </div>
-                <div class="articleBody clearfix">
-                    <!--缩略图-->
-                    <div class="articleThumb">
-                        <a href="{% url 'blogs:detail' article.id %}"><img src="{% static article.images %}" alt="{{ article.title }}" title="{{ article.title }}"></a>
-                    </div>
-                    <!--摘要-->
-                    <div class="articleFeed">
-                        <p>{{ article.description }}</p>
-                    </div>
-                    <!--tags-->
-                    <div class="articleTags">
-                        <ul></ul>
-                    </div>
-                </div>
-                <div class="articleFooter clearfix">
-                    <ul class="articleStatu">
-                        <li><i class="fa fa-calendar"></i>{{ article.date }}</li>
-                        <li><i class="fa fa-eye"></i>{{ article.count }}次浏览</li>
-                        <li><a href="{% url 'blogs:article' article.type_id %}"><i class="fa fa-folder-o"></i></a>
-                            <a href="{% url 'blogs:article' article.type_id %}" rel="category">{{ article.category }}</a>
-                        </li>
-                    </ul>
-                    <a href="{% url 'blogs:detail' article.id %}" class="btn btn-readmore btn-info btn-md">阅读更多</a>
-                </div>
-            </div>
-            <!--single article-->
-            {% endfor %}
+        <div class="col-md-12" id="app">
 
             </div>
         </div>
@@ -87,15 +54,18 @@
 <div class="container pageNav">
     <div class="row">
         <div class="col-md-12">
-            <nav>
+            <nav style="text-align: center">
               <ul class="pagination">
-                  <li><button type="button" id="btn"><a class="next page-numbers" href="{% url 'blogs:list' 1 %}">下一页</a></button></li>
+                  <li><button type="button" id="btn">发现新世界</button></li>
               </ul>
             </nav>
         </div>
     </div>
 </div>
-{% endblock content %}
+
+<script type="text/javascript" src="{% static 'js/ajax/index.js' %}"></script>
+
+  {% endblock content %}
 
 
 

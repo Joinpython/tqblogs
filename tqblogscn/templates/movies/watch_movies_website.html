@@ -4,56 +4,29 @@
 <title>观影小站 | 漂泊在北京的个人博客 </title>
 {% endblock title %}
 {% block content %}
-<!--文章列表-->
-<div class="articleList container" style="margin-top: 88px">
-    <div class="row">
-        <div class="col-md-12">
-            {% for website in watch_movies_website %}
-            <!--single article-->
-            <div class="article">
-                <div class="articleHeader">
-                    <h1 class="articleTitle"><a href="{{ website.url }}">{{ website.title }}（{{ website.url }}） </a></h1>
-                </div>
-                <div class="articleBody clearfix">
-                    <!--缩略图-->
-                    <div class="articleThumb">
-                        <a href="{{ website.url }}"><img src="{% static website.images %}" alt="{{ website.abstract }}" title="{{ website.title }}"></a>
-                    </div>
-                    <!--摘要-->
-                    <div class="articleFeed">
-                        <p>{{ website.abstract }}</p>
-                    </div>
-                    <!--tags-->
-                    <div class="articleTags">
-                        <ul></ul>
-                    </div>
-                </div>
-                <div class="articleFooter clearfix">
-                    <ul class="articleStatu">
-                        <li><i class="fa fa-calendar"></i>{{ website.create_time }}</li>
-                        <li><a href="#"><i class="fa fa-folder-o"></i></a>
-                            <a href="#" rel="category">观影小站</a>
-                        </li>
-                    </ul>
-                    <a href="{{ website.url }}" class="btn btn-readmore btn-info btn-md">直通车</a>
+
+    <!--文章列表-->
+    <div class="articleList container" style="margin-top: 88px">
+        <div class="row">
+            <div class="col-md-12" id="app">
                 </div>
             </div>
-            <!--single article-->
-            {% endfor %}
+    </div>
+
+    <div class="container pageNav">
+        <div class="row">
+            <div class="col-md-12">
+                <nav style="text-align: center">
+                  <ul class="pagination">
+                      <li><button type="button" id="btn">发现新世界</button></li>
+                  </ul>
+                </nav>
             </div>
-        </div>
-</div>
-<div class="container pageNav">
-    <div class="row">
-        <div class="col-md-12">
-            <nav>
-              <ul class="pagination">
-                  <li><button type="button" id="btn"><a class="next page-numbers" href="{% url 'blogs:list' 1 %}">下一页</a></button></li>
-              </ul>
-            </nav>
         </div>
     </div>
-</div>
+
+    <script type="text/javascript" src="{% static 'js/ajax/watch.js' %}"></script>
+
 
 {% endblock content %}
 

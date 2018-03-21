@@ -29,9 +29,7 @@
         {% endfor %}
         </div>
       </div>
-
-      <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Reset my password' %}</button>
-
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn">{% trans 'Reset my password' %}</button>
       </div>
     </div>
   </form>
@@ -39,6 +37,25 @@
 </div> <!-- /container -->
 
 <script type="text/javascript">
-document.getElementById('id_email').focus()
+document.getElementById('id_email').focus();
+
+{#$('#btn').click(function () {#}
+{#    var email = $('#id_email').val();#}
+{#    $.ajax({#}
+{#        type:'post',#}
+{#        dataType:'json',#}
+{#        url:'{% url "blogs:send_rest_email" %}',#}
+{#        data:{'email':email},#}
+{#        success:function (data) {#}
+{#            if (data.code === 200){#}
+{#                alert('rest password successfull！！')#}
+{#            }else if(data.code === 201){#}
+{#                alert('您的邮箱的账户注册信息没有找到!')#}
+{#            }#}
+{##}
+{#        }#}
+{#    })#}
+{#{)#}
+
 </script>
 {% endblock %}
