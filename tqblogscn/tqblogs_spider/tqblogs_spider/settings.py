@@ -97,7 +97,7 @@ ITEM_PIPELINES = {
 MYSQL_HOST = 'localhost'
 MYSQL_DBNAME = 'tqblogs'
 MYSQL_USER = 'root'
-MYSQL_PASSWD = 'tqblogs'
+MYSQL_PASSWD = 'admin520tqblogs'
 
 # user-agent池
 USER_AGENT_LIST = [
@@ -135,7 +135,7 @@ IP_PROXIES_LIST = [
 ]
 
 # 保存图片设置
-IMAGES_STORE = '/home/tqblogs/new_project/tqblogs/tqblogscn/static/movies/images/'
+IMAGES_STORE = '/root/home/tqblogs/tqblogscn/static/movies/images/'
 # 过期天数，90天内抓取的都不会被重抓
 IMAGES_EXPIRES = 90
 

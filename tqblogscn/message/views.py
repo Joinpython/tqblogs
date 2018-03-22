@@ -8,7 +8,7 @@ from message.models import BlogsRecord, FreshNews
 
 def fresh_news(request):
 
-    news_list = FreshNews.objects.all()
+    news_list = FreshNews.objects.order_by('-create_time')
 
     context = {
         'news_list':news_list

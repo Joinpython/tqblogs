@@ -217,12 +217,12 @@ header
 }
 .topicon i,.mobile_menu i{
 	margin-top:9px;
-	color:#fff;
+	color:gray;
 	font-size: 28px;
 }
 .toptext{
 	background: lightslategray;
-	color:#4d4d4d;
+	color:gainsboro;
 	line-height: 48px;
 	transition: all 0.3s;
 }
@@ -363,6 +363,7 @@ article
 }
 
 .btn-readmore{
+	background-color:grey;
 	float:right;
 	padding:8px 20px;
 	border:0;

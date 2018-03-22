@@ -16,8 +16,17 @@ class OpenSourceChineseCommunity(scrapy.Spider):
         url = response.xpath('//div[@class="box-aw"]/header/a/@href').extract()
         views = response.xpath('//div[@class="box-aw"]/footer/span[4]/text()').extract()
 
-        self.items['title'] = title
-        self.items['original_urls'] = url
-        self.items['views'] = views
 
-        yield self.items
+        for t in title:
+            self.items['title'] = t
+            yield self.items
+
+        for u in url:
+            self.items['original_urls'] = u
+            yield self.items
+
+        for v in views:
+            self.items['views'] = v
+            yield self.items
+
+        yield scrapy.Request(url=self.start_urls[0], callback=self.parse, dont_filter=True)

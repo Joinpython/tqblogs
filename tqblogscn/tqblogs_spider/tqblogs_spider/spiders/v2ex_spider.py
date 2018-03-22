@@ -24,14 +24,19 @@ class V2exSpider(scrapy.Spider):
 
         for url in urls_list:
             self.items['original_urls'] = url
+            yield self.items
 
         for t in title:
             self.items['title'] = t
+            yield self.items
 
         for v in views:
             self.items['views'] = v
+            yield self.items
 
-        yield self.items
+        yield scrapy.Request(url=self.start_urls[0], callback=self.parse, dont_filter=True)
+
+
 
 
 

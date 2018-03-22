@@ -230,7 +230,7 @@ li.s10 {width: 7.714285714285714%;}
 /* ----------------------*/
 #contactform input, 
 #contactform textarea {float: none; width: 250px; padding: 8px; margin: 5px 0 10px 0; background: #fcfcfc; border: 1px solid #555; border-radius: 8px; color: #555; font-size: 12px;}
-#contactform textarea {height: 150px; width: 380px; margin-bottom: 20px;}
+#contactform textarea {height: 194px; width: 380px; margin-bottom: 20px;}
 #contactform input[type="submit"] {
 	width: inherit; 
 	float: right;
