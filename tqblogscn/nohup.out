@@ -1,16 +1,8 @@
-[2018-03-20 12:48:50 +0800] [22722] [INFO] Starting gunicorn 19.7.1
-[2018-03-20 12:48:50 +0800] [22722] [INFO] Listening at: http://127.0.0.1:8000 (22722)
-[2018-03-20 12:48:50 +0800] [22722] [INFO] Using worker: sync
-[2018-03-20 12:48:50 +0800] [22725] [INFO] Booting worker with pid: 22725
+[2018-03-27 16:28:58 +0800] [13737] [INFO] Starting gunicorn 19.7.1
+[2018-03-27 16:28:58 +0800] [13737] [INFO] Listening at: http://127.0.0.1:8000 (13737)
+[2018-03-27 16:28:58 +0800] [13737] [INFO] Using worker: sync
+[2018-03-27 16:28:58 +0800] [13740] [INFO] Booting worker with pid: 13740
 Building prefix dict from the default dictionary ...
 Loading model from cache /tmp/jieba.cache
-Loading model cost 0.853 seconds.
-Prefix dict has been built succesfully.
-[2018-03-21 16:10:50 +0800] [32117] [INFO] Starting gunicorn 19.7.1
-[2018-03-21 16:10:50 +0800] [32117] [INFO] Listening at: http://127.0.0.1:8000 (32117)
-[2018-03-21 16:10:50 +0800] [32117] [INFO] Using worker: sync
-[2018-03-21 16:10:50 +0800] [32120] [INFO] Booting worker with pid: 32120
-Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 1.158 seconds.
+Loading model cost 0.869 seconds.
 Prefix dict has been built succesfully.
