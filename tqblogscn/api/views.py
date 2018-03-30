@@ -84,7 +84,6 @@ class ArticleLookView(APIView):
         return JsonResponse({'code': 200, 'message': serializer.data, 'safe': False})
 
 
-
 # 新闻页
 class FreshView(APIView):
 
@@ -167,6 +166,7 @@ class MoviesView(APIView):
         serializer = MoviesSerializer(instance=pager_list, many=True)
 
         return JsonResponse({'code': 200, 'message': serializer.data, 'safe': False})
+
 
 # 观影小站
 class WatchMoviesView(APIView):

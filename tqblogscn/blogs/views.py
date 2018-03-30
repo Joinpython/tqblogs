@@ -1,30 +1,34 @@
+
+
 import re
 from django.shortcuts import render,render_to_response
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator
-from django.views.decorators.cache import cache_page
-from blogs.models import Article, Comment, MessageBoard, Category, Links
+from blogs.models import Article, Comment, MessageBoard
 
 from django.contrib.auth.models import User
 
-category = Category.objects.all()
-link = Links.objects.all()
 
 #@cache_page(60*3)
 def index(request):
-    # blogs = Article.objects.get_article_by_create_time(limit=6, sort='new')
-    # article_list = blogs[:6]
+
+    blogs = Article.objects.all().order_by('create_time')
+    article_list = blogs[:10]
     Carousel_map = Article.objects.get_article_by_create_time(limit=6, sort='new')
-    #
+
     context = {
+        'article_list':article_list,
         'carousel':Carousel_map,
     }
+
     return render(request, 'blogs/index.html', context)
+
 
 @csrf_exempt
 def detail(request,id):
+
     if request.method == 'POST':
         name = request.POST.get('author')
         email = request.POST.get('email')
@@ -60,13 +64,12 @@ def detail(request,id):
         conent = Comment.objects.filter(blogs_id=id)
         return render(request, 'blogs/detail.html',{'blogs':blogs,
                                                     'content':conent,
-                                                    'category': category,
-                                                    'link': link,
                                                     'article_list':article_list,
                                                     })
 
+
 def list(request, page):
-    blogs = Article.objects.all()
+    blogs = Article.objects.all().order_by('-create_time')
     # 分页　每页显示10
     paginator = Paginator(blogs,10)
     num_page = paginator.num_pages
@@ -89,8 +92,6 @@ def list(request, page):
         'article_list':blogs_list,
         'blogs_list':blogs_list,
         'pages':pages,
-        'category': category,
-        'link': link
     }
 
     return render(request, 'blogs/list.html', context)
@@ -120,8 +121,6 @@ def article(request, page):
         'article_list': blogs_list,
         'blogs_list': blogs_list,
         'pages': pages,
-        'category': category,
-        'link': link
     }
 
     return render(request, 'blogs/article.html',context)
@@ -151,8 +150,6 @@ def categorys(request, page):
         'article_list': blogs_list,
         'blogs_list': blogs_list,
         'pages': pages,
-        'category': category,
-        'link': link
     }
 
     return render(request, 'blogs/article.html',context)
@@ -190,8 +187,6 @@ def messageboard(request):
         article_list = blogs[:6]
 
         return render(request, 'blogs/messageboard.html',{'content':conent,
-                                                          'category': category,
-                                                          'link': link,
                                                           'article_list':article_list
                                                           })
 
@@ -206,7 +201,6 @@ def page_error(request):
 
 def resume(request):
     return render(request, 'blogs/resume.html')
-
 
 @csrf_exempt
 def send_rest_email(request):

@@ -4,5 +4,5 @@ from study import views
 
 
 urlpatterns = [
-    url(r'^download/', views.download, name='download'),
+    url(r'^download/$', views.download, name='download'),
 ]

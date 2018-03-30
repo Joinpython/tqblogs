@@ -1,15 +1,15 @@
-        $.ajax({
-                type:'GET',
-                dataType:'json',
-                url:'http://127.0.0.1:9000/api/movies/?format=json&page=1',
-                success:function (data) {
-                    if (data.code === 200){
 
-                        var arr = data.message;
 
-                        for (var i=0; i < arr.length; i++){
+$.ajax({
+        type:'POST',
+        dataType:'json',
+        url:'http://127.0.0.1:9000/api/movies/?format=json&page=1',
+        success:function (data) {
+            if (data.code === 200){
+                var arr = data.message;
+                for (var i=0; i < arr.length; i++){
 
-                            $('#app').append('            <div class="article">\n' +
+                    $('#app').append('            <div class="article">\n' +
                                 '                <div class="articleHeader">\n' +
                                 '                    <h1 class="articleTitle"><a href="'+arr[i]['url']+'">'+arr[i]['title']+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+'评分'+'('+arr[i]['rate']+')'+'</a></h1>\n' +
                                 '                </div>\n' +
@@ -41,8 +41,7 @@
                         }
                     }
                 }
-
-            });
+    });
 
         var number = 2;
 

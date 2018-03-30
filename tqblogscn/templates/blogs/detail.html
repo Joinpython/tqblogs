@@ -26,76 +26,18 @@
                     {{ blogs.content }}
                     {% endautoescape %}
                 </div>
-		<!-- 标签 -->
-		<div class="articleTagsBox" id="coment">
-                    <p style="font-size: 25px">评论列表：</p>
-					<ul>
-                        {% for comment in content %}
-                        <li><i class="fa fa-file" aria-hidden="true"></i><span>{{ comment.name }}</span></li>
-                        <li><i class="fa fa-file" aria-hidden="true"></i><span>{{ comment.comment }}</span></li>
-                        <li><i class="fa fa-file" aria-hidden="true"></i><span>{{ comment.name }}</span></li>
-                        {% endfor %}
-                    </ul>
-
-				</div>
-				<!-- 评论 -->
-				<div class="post_content">
-					<div id="comments" class="responsesWrapper">
-                    <h3 class="comments-title">共有 <span class="commentCount">({{ content.count }})</span> 条评论</h3>
-                        <form action="#" class="commentform" id="commentform">
-                                <div class="commentform-info">
-                                    <label id="author_name" for="author">
-                                        <input class="form-control" id="author" type="text" tabindex="2" value="" name="author" placeholder="昵称[必填]" >
-                                    </label>
-                                    <label id="author_email" for="email">
-                                        <input class="form-control" id="email" type="text" tabindex="3" value="" name="email" placeholder="邮箱[选填]" >
-                                    </label>
-                                    <label id="author_website" for="url">
-                                        <input class="form-control" id="url" type="text" tabindex="4" value="" name="url" placeholder="网址(选填)">
-                                    </label>
-                                </div>
-                            <textarea class="form-control" rows="6" id="comment" placeholder="说出您的看法，提出您的建议..." name="comment"></textarea>
-                            <input style="width: auto;" name="submit" type="submit" id="submit" class="btn btn-sm btn-danger btn-block" tabindex="1" value="发表评论">
-                        </form>
-                            <div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
-    <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-    <script>
-        $('#submit').click(function () {
-            var author = $('#author').val();
-            var email = $('#email').val();
-            var url = $('#url').val();
-            var comment = $('#comment').val();
-            var cont = {
-                'author':author,
-                'email':email,
-                'url':url,
-                'comment':comment
-            };
 
-            $.ajax({
-                type:"post",
-                dataType:"json",
-                url:"{% url 'blogs:detail' blogs.id %}",
-                data:cont,
-                success:function (data) {
-                if (data.code === 200){
-                    alert('有参数为空！！');
-                }else if(data.code === 201){
-                    alert('邮箱格式不正确！！');
-                }else if (data.code === 202){
-                    alert('评论成功！！');
-                    location.href = data.next_url
-
-                }
-            }
-        })
-    });
-</script>
+<!--PC和WAP自适应版-->
+<div id="SOHUCS" style="background-color: white;margin-top: 10px;text-align: center;" ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cytnAx3QK';
+var conf = 'prod_3de7a522e3303b1eb8fa7f8538a1ee27';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 {% endblock content %}

@@ -9,7 +9,7 @@ SECRET_KEY = '68pc0oe+$7ze(u1bpg==c@ir)4hh-ki-2ex-k0f9p@=6f^%^=-'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.tqblogs.cn','tqblogs.cn']
+ALLOWED_HOSTS = ['www.tqblogs.cn','tqblogs.cn', '127.0.0.1']
 
 INSTALLED_APPS = [
     'xadmin',
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'movies',
     'message',
     'study',
+    'tqblogs_spider',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,8 @@ STATICFILES_FINDERS = (
 
 
 # 富文本编辑器配置
-MEDIA_ROOT = os.path.join(BASE_DIR, "static")
+MEDIA_URL = '/upload/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "upload/")
 
 
 # 全文搜索配置

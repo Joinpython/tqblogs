@@ -97,7 +97,7 @@ class Article(BaseModels):
     date = models.DateField(verbose_name='发布时间')
     images = models.ImageField(upload_to='images/', verbose_name='博文图片')
     description = models.TextField(verbose_name='博文简介')
-    content = UEditorField(width=800, height=600,imagePath='upload/images/', filePath='upload/files/', verbose_name='博文内容')
+    content = UEditorField(toolbars='besttome',width=800, height=600,imagePath='images/', filePath='files/', max_length=1024000000000000000,default=u'', verbose_name='博文内容')
     category = models.ForeignKey(Category, blank=True, null=True, verbose_name='标签')
 
     def views_count(self):
@@ -116,6 +116,7 @@ class Article(BaseModels):
         return self.title
 
 
+# 评论管理
 class CommentManager(models.Manager):
 
     def create_comment(self,author, email, comment,blogs_id,url=None):
@@ -167,7 +168,6 @@ class EmailVerifyRecord(models.Model):
 
     def __str__(self):
         return self.email
-
 
 
 # 留言板

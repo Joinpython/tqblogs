@@ -8,7 +8,6 @@ from blogs import views
 xadmin.autodiscover()
 xversion.register_models()
 
-
 urlpatterns = [
     url(r'^xadmin/', include(xadmin.site.urls)),
     url(r'^', include('blogs.urls', namespace='blogs')),
@@ -23,5 +22,14 @@ urlpatterns = [
 
 handler404 = views.page_not_found
 handler500 = views.page_error
+
+
+from django.conf import settings
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )
 
 

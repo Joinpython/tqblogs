@@ -16,7 +16,7 @@
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
           <div class="item active">
-              <a href="{% url 'blogs:detail' 35 %}"><img src="{% static 'images/1516003321435.jpg' %}" alt="First slide"></a>
+              <a href="{% url 'blogs:detail' 35 %}"><img src="{% static 'images/spider01.jpg' %}" alt="First slide"></a>
              <div class="carousel-caption">
                  <h3>20几岁是可以勇敢去做所有决定的年纪</h3>
                  <p></p>
@@ -47,7 +47,39 @@
 <div class="articleList container">
     <div class="row">
         <div class="col-md-12" id="app">
-
+            {% for article in article_list %}
+            <!--single article-->
+            <div class="article">
+                <div class="articleHeader">
+                    <h1 class="articleTitle"><a href="{% url 'blogs:detail' article.id %}">{{ article.title }}</a></h1>
+                </div>
+                <div class="articleBody clearfix">
+                    <!--缩略图-->
+                    <div class="articleThumb">
+                        <a href="{% url 'blogs:detail' article.id %}"><img src="{% static 'images/html01_LUL4jIK.jpeg' %}" alt="{{ article.title }}" title="{{ article.title }}"></a>
+                    </div>
+                    <!--摘要-->
+                    <div class="articleFeed">
+                        <p>{{ article.description }}</p>
+                    </div>
+                    <!--tags-->
+                    <div class="articleTags">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="articleFooter clearfix">
+                    <ul class="articleStatu">
+                        <li><i class="fa fa-calendar"></i>{{ article.date }}</li>
+                        <li><i class="fa fa-eye"></i>{{ article.count }}次浏览</li>
+                        <li><a href="{% url 'blogs:article' article.type_id %}"><i class="fa fa-folder-o"></i></a>
+                            <a href="{% url 'blogs:article' article.type_id %}" rel="category">{{ article.category }}</a>
+                        </li>
+                    </ul>
+                    <a href="{% url 'blogs:detail' article.id %}" class="btn btn-readmore btn-info btn-md">阅读更多</a>
+                </div>
+            </div>
+            <!--single article-->
+            {% endfor %}
             </div>
         </div>
 </div>
