@@ -16,7 +16,11 @@
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
           <div class="item active">
+<<<<<<< HEAD
               <a href="{% url 'blogs:detail' 35 %}"><img src="{% static 'images/spider01.jpg' %}" alt="First slide"></a>
+=======
+              <a href="{% url 'blogs:detail' 35 %}"><img src="{% static 'images/1516003350819.jpg' %}" alt="20几岁是可以勇敢去做所有决定的年纪"></a>
+>>>>>>> 1c828b9f5e97dabb1d9309c38940cd80c4c6003f
              <div class="carousel-caption">
                  <h3>20几岁是可以勇敢去做所有决定的年纪</h3>
                  <p></p>
@@ -75,7 +79,7 @@
                             <a href="{% url 'blogs:article' article.type_id %}" rel="category">{{ article.category }}</a>
                         </li>
                     </ul>
-                    <a href="{% url 'blogs:detail' article.id %}" class="btn btn-readmore btn-info btn-md">阅读更多</a>
+                    <a href="{% url 'blogs:detail' article.id %}" class="btn btn-readmore btn-info btn-md" style="background-color:gray;">阅读更多</a>
                 </div>
             </div>
             <!--single article-->

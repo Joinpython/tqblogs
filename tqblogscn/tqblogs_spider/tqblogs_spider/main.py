@@ -76,7 +76,15 @@ execute(['scrapy', 'crawl', 'science_guokr_spider'])
 
 
 
+<<<<<<< HEAD
 
 
+=======
+#execute(['scrapy', 'crawl', 'v2ex_spider'])
+
+#execute(['scrapy', 'crawl', 'open_chinese_community_spider'])
+
+#execute(['scrapy', 'crawl', 'csdn_blogs_spider'])
+>>>>>>> 1c828b9f5e97dabb1d9309c38940cd80c4c6003f
 
 

@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 SECRET_KEY = '68pc0oe+$7ze(u1bpg==c@ir)4hh-ki-2ex-k0f9p@=6f^%^=-'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['www.tqblogs.cn','tqblogs.cn', '127.0.0.1']
 
@@ -67,7 +67,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tqblogs',
         'USER':'root',
-        'PASSWORD':'tqblogs',
+        'PASSWORD':'admin520tqblogs',
         'HOST':'127.0.0.1',
         'PORT':'3306',
     }
@@ -106,7 +106,7 @@ STATICFILES_DIRS = [
 ]
 
 # 执行python manage.py collectstatic 以后静态文件路径
-STATIC_ROOT = '/home/tqblogs/new_project/tqblogs/tqblogscn/media'
+STATIC_ROOT = '/root/home/tqblogs/tqblogscn/media'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -141,3 +141,12 @@ EMAIL_HOST_USER = 'tqblogs@163.com'
 EMAIL_HOST_PASSWORD = 'ping127.0.0.1'
 DEFAULT_FROM_EMAIL = 'tqblogs <tqblogs@163.com>'
 
+#　发送邮件设置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'tqblogs@163.com'
+EMAIL_HOST_PASSWORD = 'ping127.0.0.1'
+DEFAULT_FROM_EMAIL = 'tqblogs <tqblogs@163.com>'

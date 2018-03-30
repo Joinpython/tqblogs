@@ -4,6 +4,7 @@
 <title>留言板 | 漂泊在北京的个人博客 </title>
 {% endblock title %}
 {% block content %}
+<<<<<<< HEAD
 {#        <div class="post_content" style="margin-top: 66px">#}
 {#            <div id="comments" class="responsesWrapper">#}
 {#                <div>#}
@@ -77,6 +78,26 @@
 {#    });#}
 {##}
 {#</script>#}
+=======
+        <div class="post_content" style="margin-top: 66px">
+            <div id="comments" class="responsesWrapper">
+                    <p style="font-size: 25px" >共有 <span class="commentCount">{{ content.count }}</span> 条留言</p>
+                        <form action="#" class="commentform" id="commentform">
+                                <div class="commentform-info">
+                                    <label id="author_name" for="author">
+                                        <input class="form-control" id="author" type="text" tabindex="2" value="" name="author" placeholder="昵称[必填]" >
+                                    </label>
+                                    <label id="author_email" for="email">
+                                        <input class="form-control" id="email" type="text" tabindex="3" value="" name="email" placeholder="邮箱[选填]" >
+                                    </label>
+                                    <label id="author_website" for="url">
+                                        <input class="form-control" id="url" type="text" tabindex="4" value="" name="url" placeholder="网址(选填)">
+                                    </label>
+                                </div>
+                            <textarea style="width: 1300px; height: 200px" class="form-control" rows="6" id="comment" placeholder="说出您的看法，提出您的建议..." name="comment"></textarea>
+                            <input style="width: auto;" name="submit" type="submit" id="submit" class="btn btn-sm btn-danger btn-block" tabindex="1" value="留言">
+                        </form>
+>>>>>>> 1c828b9f5e97dabb1d9309c38940cd80c4c6003f
 
     <div style="margin-top: 88px"> ｌｉｕｙａｎｂａｎ</div>
 
